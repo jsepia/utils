@@ -1,5 +1,7 @@
 # Util
 
+[![NPM version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/jsepia/util.svg?branch=master)](https://travis-ci.org/jsepia/util) [![Coverage Status](https://coveralls.io/repos/github/jsepia/util/badge.svg?branch=master)](https://coveralls.io/github/jsepia/util?branch=master)
+
 My utility library. Because some wheels still need to be reinvented.
 
 # Utilities
