@@ -1,0 +1,33 @@
+{
+  "name": "@jsepia/utils",
+  "version": "1.0.0",
+  "description": "My utility library. Because some wheels are worth reinventing.",
+  "scripts": {
+    "build": "neutrino build",
+    "test": "neutrino test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsepia/util.git"
+  },
+  "author": "Julio Sepia",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jsepia/util/issues"
+  },
+  "homepage": "https://github.com/jsepia/util#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-subset": "^1.5.0",
+    "coveralls": "^2.13.1",
+    "neutrino": "^5.8.0",
+    "neutrino-preset-mocha": "^5.8.0",
+    "neutrino-preset-web": "^5.8.0"
+  },
+  "neutrino": {
+    "use": [
+      "neutrino-preset-web",
+      "neutrino-preset-mocha"
+    ]
+  }
+}
