@@ -1,6 +1,5 @@
 import { expect } from 'chai'
-import buildUri from '../lib/uri/build-uri'
-import parseUri from '../lib/uri/parse-uri'
+import { buildUri, parseUri } from '..'
 
 describe('uri tests', () => {
   describe('parseUri', () => {
