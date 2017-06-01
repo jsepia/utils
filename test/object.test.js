@@ -6,18 +6,18 @@ describe('object tests', () => {
     it('merges objects deeply', () => {
       const merged = deepMerge(
         {
-          'body': {
-            'ribs': 5,
-            'neck': {
-              'skull': null
+          body: {
+            ribs: 5,
+            neck: {
+              skull: null
             }
           }
         },
         {
-          'body': {
-            'hands': [
+          body: {
+            hands: [
               {
-                'thumb': [
+                thumb: [
                   'distal',
                   'proximal',
                   'metacarpal'
@@ -27,7 +27,9 @@ describe('object tests', () => {
           }
         },
         {
-          'tail': true
+          tail: {
+            length: 9
+          }
         }
       )
       expect(merged).to.deep.equal(
@@ -47,7 +49,9 @@ describe('object tests', () => {
             },
             ribs: 5
           },
-          tail: true
+          tail: {
+            length: 9
+          }
         }
       )
     })

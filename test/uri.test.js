@@ -47,10 +47,11 @@ describe('uri tests', () => {
       const uri = buildUri({
         protocol: 'http',
         host: 'juliosepia.com',
+        port: 8080,
         path: '/posts/util.html',
         anchor: 'introduction'
       })
-      expect(uri).to.equal('http://juliosepia.com/posts/util.html#introduction')
+      expect(uri).to.equal('http://juliosepia.com:8080/posts/util.html#introduction')
     })
     it('can build login URLs from a userInfo string', () => {
       const uri = buildUri({
@@ -90,6 +91,18 @@ describe('uri tests', () => {
       })
       expect(uri).to.equal('http://juliosepia.com/?version=1.0&format=html')
     })
+
+    it('parses URIs in string form', () => {
+      const uri = buildUri('http://juliosepia.com/?version=1.0&format=html')
+      expect(uri).to.equal('http://juliosepia.com/?version=1.0&format=html')
+    })
+
+    it('throws if passed anything other than an object or a string', () => {
+      const invalidBuildUriCall = () => {
+        buildUri(14)
+      }
+      expect(invalidBuildUriCall).to.throw()
+    })
   }) // end buildUri
 
   describe('integration', () => {
@@ -104,6 +117,7 @@ describe('uri tests', () => {
         user: 'jsepia',
         password: 'hunter2',
         host: 'juliosepia.com',
+        port: '80',
         path: '/posts/util.html',
         query: 'version=1.0&format=html',
         anchor: 'introduction'
