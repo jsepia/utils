@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import buildUri from '../src/uri/build-uri'
-import parseUri from '../src/uri/parse-uri'
+import buildUri from '../lib/uri/build-uri'
+import parseUri from '../lib/uri/parse-uri'
 
 describe('uri tests', () => {
   describe('parseUri', () => {
@@ -20,7 +20,6 @@ describe('uri tests', () => {
         format: 'html'
       })
       expect(parsed.anchor).to.equal('introduction')
-      expect(parsed).to.equal({})
     })
 
     it('parses URIs', () => {
@@ -102,7 +101,7 @@ describe('uri tests', () => {
       }
       const outputUrlParts = parseUri(buildUri(urlParts))
       expect(outputUrlParts).to.be.an('object')
-      for (var key in urlParts) {
+      for (let key in urlParts) {
         expect(outputUrlParts[key]).to.equal(urlParts[key])
       }
     })
