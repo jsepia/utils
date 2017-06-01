@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { buildUri, parseUri } from '..'
+import { buildUri, parseUri } from '../lib'
 
 describe('uri tests', () => {
   describe('parseUri', () => {
@@ -30,6 +30,16 @@ describe('uri tests', () => {
       expect(parsed.file).to.equal('')
       expect(parsed.query).to.equal('')
     })
+
+    // it('supports loose mode', () => {
+    //   const parsed = parseUri('juliosepia.com/posts')
+    //   expect(parsed).to.equal({})
+    // })
+
+    // it('supports strict mode', () => {
+    //   const parsed = parseUri('juliosepia.com/posts', { strictMode: true })
+    //   expect(parsed).to.equal({})
+    // })
   }) // end parseUri
 
   describe('buildUri', () => {

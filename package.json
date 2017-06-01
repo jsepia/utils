@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My utility library. Because some wheels are worth reinventing.",
   "main": "dist/jsepia-util.umd.js",
-  "module": "dist/jsepia-util.es2015.js",
+  "module": "lib/index.js",
   "scripts": {
     "build": "npm run lint && rollup -c rollup.conf.js",
     "clean": "rimraf dist/*",
