@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { buildUri, parseUri } from '../lib'
+import { buildUri, isValidUrl, parseUri } from '../lib'
 
 describe('uri tests', () => {
   describe('parseUri', () => {
@@ -31,15 +31,15 @@ describe('uri tests', () => {
       expect(parsed.query).to.equal('')
     })
 
-    // it('supports loose mode', () => {
-    //   const parsed = parseUri('juliosepia.com/posts')
-    //   expect(parsed).to.equal({})
-    // })
+    it('supports loose mode', () => {
+      const parsed = parseUri('juliosepia.com/posts')
+      expect(parsed.path).to.equal('/posts')
+    })
 
-    // it('supports strict mode', () => {
-    //   const parsed = parseUri('juliosepia.com/posts', { strictMode: true })
-    //   expect(parsed).to.equal({})
-    // })
+    it('supports strict mode', () => {
+      const parsed = parseUri('juliosepia.com/posts', { strictMode: true })
+      expect(parsed.path).to.equal('juliosepia.com/posts')
+    })
   }) // end parseUri
 
   describe('buildUri', () => {
@@ -92,6 +92,26 @@ describe('uri tests', () => {
       expect(uri).to.equal('http://juliosepia.com/?version=1.0&format=html')
     })
 
+    it('can build URIs without a protocol', () => {
+      const uri = buildUri({
+        path: '/api/posts',
+        queryKey: {
+          limit: 10,
+          offset: 50
+        }
+      })
+      expect(uri).to.equal('/api/posts?limit=10&offset=50')
+    })
+
+    it('can build URIs with a username but no password', () => {
+      const uri = buildUri({
+        protocol: 'ftp',
+        host: 'ftp.juliosepia.com',
+        user: 'anonymous'
+      })
+      expect(uri).to.equal('ftp://anonymous@ftp.juliosepia.com')
+    })
+
     it('parses URIs in string form', () => {
       const uri = buildUri('http://juliosepia.com/?version=1.0&format=html')
       expect(uri).to.equal('http://juliosepia.com/?version=1.0&format=html')
@@ -127,6 +147,32 @@ describe('uri tests', () => {
       for (let key in urlParts) {
         expect(outputUrlParts[key]).to.equal(urlParts[key])
       }
+    })
+  })
+
+  describe('isValidUrl', () => {
+    it('identifies valid URLs', () => {
+      expect(isValidUrl('ssh://juliosepia.xyz')).to.be.true
+      expect(isValidUrl('juliosepia.com:8080')).to.be.true
+      expect(isValidUrl('jsepia:hunter2@juliosepia.com')).to.be.true
+    })
+    it('identifies valid URLs with empty segments', () => {
+      expect(isValidUrl('http://@juliosepia.com')).to.be.true
+      expect(isValidUrl('http://juliosepia.com?')).to.be.true
+      expect(isValidUrl('http://juliosepia.com/?')).to.be.true
+      expect(isValidUrl('http://juliosepia.com#')).to.be.true
+      expect(isValidUrl('http://juliosepia.com/#')).to.be.true
+      expect(isValidUrl('http://juliosepia.com//util.html')).to.be.true
+    })
+    it('identifies invalid URLs', () => {
+      expect(isValidUrl('juliosepia')).to.be.false
+      expect(isValidUrl('juliosepia.com')).to.be.false
+      expect(isValidUrl('//juliosepia.com')).to.be.false
+      expect(isValidUrl('http://:juliosepia.com')).to.be.false
+      expect(isValidUrl('juliosepia.com/posts/util.html')).to.be.false
+      expect(isValidUrl('util.html')).to.be.false
+      expect(isValidUrl('/posts/util.html')).to.be.false
+      expect(isValidUrl('../posts/util.html')).to.be.false
     })
   })
 })

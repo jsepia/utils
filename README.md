@@ -131,6 +131,25 @@ parseUri('http://jsepia:hunter2@juliosepia.com/posts/util.html?version=1.0&forma
 }
 ```
 
+## Validation
+
+### isValidUrl
+
+```js
+import {isValidUrl} from '@jsepia/util'
+
+const url = prompt('enter URL here')
+if (isValidUrl(url)) {
+  request(url).then(
+    (response) => handleResponse,
+    (err) => handleError
+  )
+}
+else {
+  handleError(new Error(`Invalid URL: ${url}`))
+}
+```
+
 ## TODO
 
 * Test the exported library
