@@ -55,5 +55,15 @@ describe('object tests', () => {
         }
       )
     })
-  }) // end parseUri
+
+    it('does not merge non-objects', () => {
+      expect(deepMerge([1, 2, 3], ['a', 'b', 'c'])).to.deep.equal([1, 2, 3])
+    })
+
+    it('does not modify the original object', () => {
+      const originalObject = { a: 1 }
+      const result = deepMerge(originalObject, {b:2})
+      expect(result).to.deep.equal(originalObject)
+    })
+  }) // end deepMerge
 })

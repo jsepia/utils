@@ -6,17 +6,71 @@ My utility library. Because some wheels still need to be reinvented.
 
 # Utilities
 
+## Feature detection
+
+### isBrowser
+
+```js
+import {isBrowser} from '@jsepia/util'
+
+if (isBrowser()) {
+  document.createElement('canvas')
+}
+```
+
+## Object
+
+### deepMerge
+
+```js
+import {deepMerge} from '@jsepia/util'
+
+const defaults = {
+  targets: {
+    'app.js': 'src/**/*.js',
+    'tests.js': 'test/**/*.js'
+  },
+  verbose: false
+}
+
+const userPreferences = {
+  targets: {
+    'libs.js': 'lib/**/*.js'
+  }
+}
+
+const commandLineParams = {
+  verbose: true
+}
+
+const options = deepMerge(defaults, userPreferences, commandLineParams)
+```
+
+**Output:**
+
+```json
+{
+  "targets": {
+    "app.js": "src/**/*.js",
+    "tests.js": "test/**/*.js",
+    "libs.js": "lib/**/*.js",
+  },
+  "verbose": true
+}
+```
+
 ## URL/URI manipulation
 
 ### buildUri
 
 ```js
-import buildUri from '@jsepia/util'
+import {buildUri} from '@jsepia/util'
 
 buildUri({
   // it supports the basic options you would expect
   protocol: 'http',
   host: 'juliosepia.com',
+  port: '8080',
   path: '/posts/util.html',
   anchor: 'introduction', // hash
 
@@ -38,17 +92,23 @@ buildUri({
 })
 ```
 
+**Output:**
+
+```
+http://jsepia:hunter2@juliosepia.com:8080/posts/util.html?version=1.0&format=html#introduction
+```
+
 ### parseUri
 
 [Original by Steven Levithan](http://blog.stevenlevithan.com/archives/parseuri)
 
 ```js
 parseUri('http://jsepia:hunter2@juliosepia.com/posts/util.html?version=1.0&format=html#introduction')
+```
 
-/*
+**Output:**
 
-Output:
-
+```json
 {
   "anchor": "introduction"
   "authority": "jsepia:hunter2@juliosepia.com"
@@ -69,8 +129,6 @@ Output:
   "user": "jsepia"
   "userInfo": "jsepia:hunter2"
 }
-
- */
 ```
 
 ## TODO
