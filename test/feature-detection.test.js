@@ -21,5 +21,5 @@ describe('feature detection tests', () => {
       //   expect(isBrowser()).to.be.true
       // })()
     })
-  }) // end parseUri
+  }) // end isBrowser
 })
