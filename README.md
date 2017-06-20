@@ -18,6 +18,59 @@ if (isBrowser()) {
 }
 ```
 
+## ID
+
+### IDGenerator
+
+```js
+import {IDGenerator} from '@jsepia/util'
+
+const catIDGenerator = new IDGenerator()
+const dogIDGenerator = new IDGenerator()
+
+function createCat(name) {
+  return {
+    id: catIDGenerator.generateID()
+    name: name,
+    toy: 'scratcher'
+  }
+}
+
+function createDog(name) {
+  return {
+    id: dogIDGenerator.generateID()
+    name: name,
+    toy: 'ball'
+  }
+}
+```
+
+### generate-id
+
+```js
+import {generateID} from '@jsepia/util'
+
+const entities = []
+
+function spawnMonster() {
+  entities[generateID()] = new Monster()
+}
+
+function spawnNPC() {
+  entities[generateID()] = new NPC()
+}
+
+function getEntityType(id) {
+  if (entities[id] instanceof Monster) {
+    return 'monster'
+  }
+  else if (entities[id] instanceof NPC) {
+    return 'npc'
+  }
+  return 'unknown'
+}
+```
+
 ## Object
 
 ### deepMerge
