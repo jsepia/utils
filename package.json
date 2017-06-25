@@ -1,6 +1,6 @@
 {
   "name": "@jsepia/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My utility library. Because some wheels are worth reinventing.",
   "publishConfig": {
     "access": "public"
@@ -33,6 +33,7 @@
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.0",
     "eslint": "^3.19.0",
+    "eslint-config-jsepia": "^1.0.1",
     "mocha": "^3.4.2",
     "nyc": "^11.0.1",
     "rimraf": "^2.6.1",
