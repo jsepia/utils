@@ -1,6 +1,6 @@
 # Util
 
-[![Build Status](https://travis-ci.org/jsepia/utils.svg?branch=master)](https://travis-ci.org/jsepia/utils) [![Coverage Status](https://coveralls.io/repos/github/jsepia/utils/badge.svg?branch=master)](https://coveralls.io/github/jsepia/utils?branch=master) [![NPM version](https://img.shields.io/npm/v/jsepia-utils.svg)](https://npmjs.org/package/jsepia-utils)
+[![Build Status](https://travis-ci.org/jsepia/utils.svg?branch=master)](https://travis-ci.org/jsepia/utils) [![Coverage Status](https://coveralls.io/repos/github/jsepia/utils/badge.svg?branch=master)](https://coveralls.io/github/jsepia/utils?branch=master) [![NPM version](https://img.shields.io/npm/v/@jsepia/utils.svg)](https://npmjs.org/package/@jsepia/utils)
 
 My utility library. Because some wheels still need to be reinvented.
 
