@@ -1,6 +1,6 @@
 # Util
 
-[![Build Status](https://travis-ci.org/jsepia/util.svg?branch=master)](https://travis-ci.org/jsepia/util) [![Coverage Status](https://coveralls.io/repos/github/jsepia/util/badge.svg?branch=master)](https://coveralls.io/github/jsepia/util?branch=master)
+[![Build Status](https://travis-ci.org/jsepia/utils.svg?branch=master)](https://travis-ci.org/jsepia/utils) [![Coverage Status](https://coveralls.io/repos/github/jsepia/utils/badge.svg?branch=master)](https://coveralls.io/github/jsepia/utils?branch=master)
 
 My utility library. Because some wheels still need to be reinvented.
 
@@ -11,7 +11,7 @@ My utility library. Because some wheels still need to be reinvented.
 ### isBrowser
 
 ```js
-import {isBrowser} from '@jsepia/util'
+import {isBrowser} from '@jsepia/utils'
 
 if (isBrowser()) {
   document.createElement('canvas')
@@ -23,7 +23,7 @@ if (isBrowser()) {
 ### IDGenerator
 
 ```js
-import {IDGenerator} from '@jsepia/util'
+import {IDGenerator} from '@jsepia/utils'
 
 const catIDGenerator = new IDGenerator()
 const dogIDGenerator = new IDGenerator()
@@ -48,7 +48,7 @@ function createDog(name) {
 ### generate-id
 
 ```js
-import {generateID} from '@jsepia/util'
+import {generateID} from '@jsepia/utils'
 
 const entities = []
 
@@ -76,7 +76,7 @@ function getEntityType(id) {
 ### deepMerge
 
 ```js
-import {deepMerge} from '@jsepia/util'
+import {deepMerge} from '@jsepia/utils'
 
 const defaults = {
   targets: {
@@ -117,7 +117,7 @@ const options = deepMerge(defaults, userPreferences, commandLineParams)
 ### buildUri
 
 ```js
-import {buildUri} from '@jsepia/util'
+import {buildUri} from '@jsepia/utils'
 
 buildUri({
   // it supports the basic options you would expect
@@ -189,7 +189,7 @@ parseUri('http://jsepia:hunter2@juliosepia.com/posts/util.html?version=1.0&forma
 ### isValidUrl
 
 ```js
-import {isValidUrl} from '@jsepia/util'
+import {isValidUrl} from '@jsepia/utils'
 
 const url = prompt('enter URL here')
 if (isValidUrl(url)) {
@@ -210,7 +210,7 @@ Functions that make AJAX requests and return promises.
 ### get
 
 ```js
-import {get} from '@jsepia/util'
+import {get} from '@jsepia/utils'
 
 get(
   '/api/posts',
