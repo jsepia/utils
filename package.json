@@ -2,6 +2,9 @@
   "name": "@jsepia/utils",
   "version": "1.0.0",
   "description": "My utility library. Because some wheels are worth reinventing.",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/jsepia-utils.umd.js",
   "module": "lib/index.js",
   "scripts": {
