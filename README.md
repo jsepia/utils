@@ -112,6 +112,69 @@ const options = deepMerge(defaults, userPreferences, commandLineParams)
 }
 ```
 
+## Type checking
+
+### isArray
+
+```js
+import {isArray} from '@jsepia/utils'
+
+isArray([]) // true
+isArray({}) // false
+isArray('') // false
+```
+
+### isDefined
+
+```js
+import {isDefined} from '@jsepia/utils'
+
+isDefined(null) // true
+isDefined(undefined) // false
+
+const kitty = {
+  ears: 2,
+  paws: 4,
+  status: 'cute'
+}
+isDefined(kitty.status) // true
+isDefined(kitty.wings)  // false
+```
+
+### isIterable
+
+```js
+import {isIterable} from '@jsepia/utils'
+
+isIterable()       // true
+isIterable([])     // true
+isIterable('meow') // true
+
+isIterable(null)   // false
+isIterable({})     // false
+```
+
+### isObject
+
+```js
+import {isObject} from '@jsepia/utils'
+
+isObject()              // false
+isObject(null)          // false (even though typeof null === 'object')
+isObject(function() {}) // false
+
+isObject({})         // true
+isObject([])         // true
+
+// gotchas
+isObject(true)          // false
+isObject(new Boolean()) // false
+isObject(1)             // false
+isObject(new Number())  // false
+isObject('')            // false
+isObject(new String())  // false
+```
+
 ## URL/URI manipulation
 
 ### buildUri
