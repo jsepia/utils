@@ -8,11 +8,14 @@
   "main": "dist/jsepia-utils.umd.js",
   "module": "lib/index.js",
   "scripts": {
-    "build": "npm run lint && rollup -c rollup.conf.js",
+    "build": "npm run lint && npm run build:lib && npm run build:docs",
+    "build:lib": "rollup -c rollup.conf.js",
+    "build:docs": "jsdoc -c jsdoc.conf.json",
     "clean": "rimraf dist/*",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/**/*.js test/**/*.js",
-    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.test.js",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test": "npm run lint && cross-env NODE_ENV=test nyc mocha test/**/*.test.js",
+    "watch": "watch -p \"lib/**/*.js\" -c \"npm test\""
   },
   "repository": {
     "type": "git",
@@ -38,7 +41,8 @@
     "nyc": "^11.0.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
-    "rollup-plugin-buble": "^0.15.0"
+    "rollup-plugin-buble": "^0.15.0",
+    "watch-cli": "^0.2.2"
   },
   "nyc": {
     "require": [
