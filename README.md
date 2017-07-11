@@ -266,38 +266,6 @@ else {
 }
 ```
 
-## XHR
-
-Functions that make AJAX requests and return promises.
-
-### get
-
-```js
-import {get} from '@jsepia/utils'
-
-get(
-  '/api/posts',
-  {limit: 10, offset: 50},
-  'json'
-  )
-  .then(
-    (successfulResponse) => {
-      const posts = response.posts
-      posts.forEach((post) => {
-        renderPost(post)
-      })
-    },
-    (errorResponse) => {
-      if (errorResponse && errorResponse.errorMessage) {
-        throw new Error(errorResponse.errorMessage)
-      }
-      else {
-        throw new Error('Request failed')
-      }
-    }
-  )
-```
-
 ## TODO
 
 * Test the exported library

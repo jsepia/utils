@@ -10,12 +10,13 @@
   "scripts": {
     "build": "npm run lint && npm run build:lib && npm run build:docs",
     "build:lib": "rollup -c rollup.conf.js",
-    "build:docs": "jsdoc -c jsdoc.conf.json",
+    "build:docs": "esdoc",
+    "build:docs2": "jsdoc -c jsdoc.conf.json",
     "clean": "rimraf dist/*",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/**/*.js test/**/*.js",
     "test": "npm run lint && cross-env NODE_ENV=test nyc mocha test/**/*.test.js",
-    "watch": "watch -p \"lib/**/*.js\" -c \"npm test\""
+    "watch": "watch -p \"lib/**/*.js\" -c \"npm test && npm run build:docs\""
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "chai-subset": "^1.5.0",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.0",
+    "esdoc": "^0.5.2",
     "eslint": "^3.19.0",
     "eslint-config-jsepia": "^1.0.1",
     "mocha": "^3.4.2",
