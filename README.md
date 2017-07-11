@@ -301,4 +301,4 @@ get(
 ## TODO
 
 * Test the exported library
-* Customize neutrino-preset-web to not output any HTML.
+* Split into bundles
