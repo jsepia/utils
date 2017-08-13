@@ -112,6 +112,26 @@ const options = deepMerge(defaults, userPreferences, commandLineParams)
 }
 ```
 
+## String
+
+### indexOfRegex
+
+```js
+import {indexOfRegex} from '@jsepia/utils'
+
+indexOfRegex('umm', /m/g)    // 1
+indexOfRegex('umm', /m/g, 2) // 2
+```
+
+### lastIndexOfRegex
+
+```js
+import {lastIndexOfRegex} from '@jsepia/utils'
+
+lastIndexOfRegex('umm', /m/g)    // 2
+lastIndexOfRegex('umm', /m/g, 2) // 1
+```
+
 ## Type checking
 
 ### isArray
