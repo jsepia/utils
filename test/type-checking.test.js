@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { isArray, isDefined, isIterable, isObject } from '../lib'
+import { isArray, isDefined, isIterable, isObject, isPlainObject } from '../lib'
 
 describe('type detection tests', () => {
   describe('isArray', () => {
@@ -75,4 +75,40 @@ describe('type detection tests', () => {
       expect(isObject(NaN)).to.not.be.true
     })
   }) // end isObject
+  
+  describe('isPlainObject', () => {
+    it('returns true for plain objects', () => {
+      expect(isPlainObject({})).to.be.true
+    })
+
+    it('returns false for arrays', () => {
+      expect(isPlainObject([])).to.not.be.true
+    })
+    
+    it('returns false for instances', () => {
+      expect(isPlainObject(new Boolean())).to.not.be.true
+      expect(isPlainObject(new Number())).to.not.be.true
+      expect(isPlainObject(new String())).to.not.be.true
+
+      class MyClass {}
+      expect(isPlainObject(new MyClass())).to.not.be.true
+    })
+    
+    it('returns false for primitives that occasionally exhibit object-like behavior', () => {
+      expect(isPlainObject(3)).to.not.be.true
+      expect(isPlainObject('')).to.not.be.true
+    })
+
+    it('returns false for objects with a custom constructor', () => {
+      var MyClass = function MyClass() {}
+      MyClass.prototype.constructor = {}
+      expect(isPlainObject(new MyClass())).to.not.be.true
+    })
+
+    it('returns false for non-objects', () => {
+      expect(isPlainObject(undefined)).to.not.be.true
+      expect(isPlainObject(null)).to.not.be.true
+      expect(isPlainObject(NaN)).to.not.be.true
+    })
+  }) // end isPlainObject
 })

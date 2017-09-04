@@ -195,6 +195,19 @@ isObject('')            // false
 isObject(new String())  // false
 ```
 
+### isPlainObject
+
+```js
+import {isPlainObject} from '@jsepia/utils'
+
+isPlainObject()            // false
+isPlainObject([])          // false (even though typeof [] === 'object')
+isPlainObject(NaN)         // false (even though NaN is a Number type)
+isPlainObject(new Date())  // false
+
+isPlainObject({})         // true
+```
+
 ## URL/URI manipulation
 
 ### buildUri
