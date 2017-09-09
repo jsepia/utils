@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { deepMerge } from '../lib'
+import { deepMerge, extend } from '../lib'
 
 describe('object tests', () => {
   describe('deepMerge', () => {
@@ -66,4 +66,39 @@ describe('object tests', () => {
       expect(result).to.deep.equal(originalObject)
     })
   }) // end deepMerge
+
+  describe('extend', () => {
+    let feline
+
+    beforeEach(() => {
+      feline = {
+        fur: true,
+        cuteness: 5
+      }
+    })
+
+    it('creates new keys', () => {
+      extend(feline, {msg: 'meow'})
+      expect(feline).to.have.property('msg')
+    })
+    
+    it('overrides existing keys', () => {
+      extend(feline, {cuteness: 10})
+      expect(feline.cuteness).to.equal(10)
+    })
+        
+    it('shallow-clones', () => {
+      const stripes = [
+        '#fff',
+        '#fc0',
+        '#000',
+        '#fc0',
+        '#000',
+        '#fc0',
+        '#fff'
+      ]
+      extend(feline, {stripes: stripes})
+      expect(feline.stripes).to.equal(stripes)
+    })
+  })
 })

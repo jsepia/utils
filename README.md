@@ -73,10 +73,12 @@ function getEntityType(id) {
 
 ## Object
 
-### deepMerge
+### deepExtend
+
+Recursively merges the properties of an object into another.
 
 ```js
-import {deepMerge} from '@jsepia/utils'
+import {deepExtend} from '@jsepia/utils'
 
 const defaults = {
   targets: {
@@ -96,7 +98,7 @@ const commandLineParams = {
   verbose: true
 }
 
-const options = deepMerge(defaults, userPreferences, commandLineParams)
+const options = deepExtend(defaults, userPreferences, commandLineParams)
 ```
 
 **Output:**
@@ -109,6 +111,35 @@ const options = deepMerge(defaults, userPreferences, commandLineParams)
     "libs.js": "lib/**/*.js",
   },
   "verbose": true
+}
+```
+
+### extend
+
+Overrides the top-level properties of an object with another's.
+
+```js
+import {extend} from '@jsepia/utils'
+
+const config = {
+  env: 'development',
+  entry: ['app.js', 'test.js']
+}
+
+const params = {
+  env: 'production',
+  entry: 'lib/**/*.js'
+}
+
+const options = extend(config, params)
+```
+
+**Output:**
+
+```json
+{
+  "env": "production",
+  "entry": "lib/**/*.js"
 }
 ```
 
