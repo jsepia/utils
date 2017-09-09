@@ -334,3 +334,14 @@ else {
 
 * Test the exported library
 * Split into bundles
+
+# Testing
+
+```sh
+# unit test
+yarn test
+
+# integ test (for CI and stuff)
+yarn build && yarn test:integ
+
+

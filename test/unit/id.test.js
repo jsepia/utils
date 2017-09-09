@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { generateID, IDGenerator } from '../lib'
+import { generateID, IDGenerator } from '../../lib'
 
 describe('ID tests', () => {
   describe('generateID', () => {

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { isArray, isDefined, isIterable, isObject, isPlainObject } from '../lib'
+import { isArray, isDefined, isIterable, isObject, isPlainObject } from '../../lib'
 
 describe('type detection tests', () => {
   describe('isArray', () => {

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { deepMerge, extend } from '../lib'
+import { deepMerge, extend } from '../../lib'
 
 describe('object tests', () => {
   describe('deepMerge', () => {

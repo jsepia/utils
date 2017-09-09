@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { isBrowser } from '../lib'
+import { isBrowser } from '../../lib'
 
 describe('feature detection tests', () => {
   describe('isBrowser', () => {

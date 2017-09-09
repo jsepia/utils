@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { indexOfRegex, lastIndexOfRegex } from '../lib'
+import { indexOfRegex, lastIndexOfRegex } from '../../lib'
 
 describe('string tests', () => {
   describe('indexOfRegex', () => {
