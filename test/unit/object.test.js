@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { deepMerge, extend } from '../../lib'
 
 describe('object tests', () => {
-  describe('deepMerge', () => {
+  describe('deepExtend', () => {
     it('merges objects deeply', () => {
       const merged = deepMerge(
         {
@@ -84,6 +84,8 @@ describe('object tests', () => {
     
     it('overrides existing keys', () => {
       extend(feline, {cuteness: 10})
+      expect({cuteness: 10}.propertyIsEnumerable('cuteness')).to.be.true
+      expect(Object.getOwnPropertyDescriptor(feline, 'cuteness').writable).to.be.true
       expect(feline.cuteness).to.equal(10)
     })
         
@@ -99,6 +101,15 @@ describe('object tests', () => {
       ]
       extend(feline, {stripes: stripes})
       expect(feline.stripes).to.equal(stripes)
+    })
+
+    it('skips non-writable properties', () => {
+      const constants = {
+        paws: 4
+      }
+      Object.freeze(constants)
+      extend(constants, {paws: 8})
+      expect(constants.paws).to.equal(4)
     })
   })
 })
