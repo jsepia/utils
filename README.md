@@ -156,6 +156,8 @@ indexOfRegex('umm', /m/g, 2) // 2
 
 ### lastIndexOfRegex
 
+Finds the index at the last occurrence of a regular expression.
+
 ```js
 import {lastIndexOfRegex} from '@jsepia/utils'
 
@@ -166,6 +168,8 @@ lastIndexOfRegex('umm', /m/g, 2) // 1
 ## Type checking
 
 ### isArray
+
+Determines whether a value is an array.
 
 ```js
 import {isArray} from '@jsepia/utils'
@@ -231,6 +235,8 @@ isNumeric([]) // false
 
 ### isObject
 
+Returns true if a value has the type `object` and is not null. This function helps you determine if it's safe to query a value's properties or perform any other object-specific operations on it.
+
 ```js
 import {isObject} from '@jsepia/utils'
 
@@ -251,6 +257,8 @@ isObject(new String())  // false
 ```
 
 ### isPlainObject
+
+Determines whether a value is a plain object - i.e. an object that is not an instance of a prototype or class, or otherwise does not have a constructor
 
 ```js
 import {isPlainObject} from '@jsepia/utils'
