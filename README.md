@@ -205,6 +205,30 @@ isIterable(null)   // false
 isIterable({})     // false
 ```
 
+### isNumeric
+
+Determines if a value is numeric. All numbers are considered numeric. Strings are numeric only if they begin with a number (e.g. `5px`).
+
+Another way of looking at it is: `isNumeric(foo) === true` implies `parseInt(foo)` will return a valid number.
+
+```js
+import {isNumeric} from '@jsepia/utils'
+
+isNumeric(-95) // true
+isNumeric('5.6') // true
+isNumeric('-5.6') // true
+isNumeric('5px') // true
+
+isNumeric('five') // false
+isNumeric('E79') // false
+
+isNumeric() // false
+isNumeric(null) // false
+isNumeric(true) // false
+isNumeric({}) // false
+isNumeric([]) // false
+```
+
 ### isObject
 
 ```js

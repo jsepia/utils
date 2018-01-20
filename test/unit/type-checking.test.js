@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { isArray, isDefined, isIterable, isObject, isPlainObject } from '../../lib'
+import { isArray, isDefined, isIterable, isNumeric, isObject, isPlainObject } from '../../lib'
 
 describe('type detection tests', () => {
   describe('isArray', () => {
@@ -52,6 +52,28 @@ describe('type detection tests', () => {
       expect(isIterable({length: true})).to.not.be.true
     })
   }) // end isIterable
+
+  describe('isNumeric', () => {
+    it('returns true for numbers and numeric strings', () => {
+      expect(isNumeric(-95)).to.be.true
+      expect(isNumeric('5.6')).to.be.true
+      expect(isNumeric('-5.6')).to.be.true
+      expect(isNumeric('5px')).to.be.true
+    })
+
+    it('returns false for strings that are not numeric', () => {
+      expect(isNumeric('five')).to.not.be.true
+      expect(isNumeric('E79')).to.not.be.true
+    })
+
+    it('returns false for things that are not numbers or strings', () => {
+      expect(isNumeric()).to.not.be.true
+      expect(isNumeric(null)).to.not.be.true
+      expect(isNumeric(true)).to.not.be.true
+      expect(isNumeric({})).to.not.be.true
+      expect(isNumeric([])).to.not.be.true
+    })
+  }) // end isNumeric
 
   describe('isObject', () => {
     it('returns true for objects', () => {
