@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { isArray, isDefined, isIterable, isNumeric, isObject, isPlainObject } from '../../lib'
+import { isArray, isDefined, isInteger, isIterable, isNaturalNumber, isNumeric, isObject, isPlainObject } from '../../lib'
 
 describe('type detection tests', () => {
   describe('isArray', () => {
@@ -10,6 +10,7 @@ describe('type detection tests', () => {
     it('returns false for non-arrays', () => {
       expect(isArray(null)).to.not.be.true
       expect(isArray({})).to.not.be.true
+      expect(isArray({length: 2})).to.not.be.true
       expect(isArray('')).to.not.be.true
     })
   }) // end isArray
@@ -52,6 +53,60 @@ describe('type detection tests', () => {
       expect(isIterable({length: true})).to.not.be.true
     })
   }) // end isIterable
+
+  describe('isInteger', () => {
+    it('returns true for integer numbers and strings that represent integers', () => {
+      expect(isInteger(-95)).to.be.true
+      expect(isInteger('5')).to.be.true
+      expect(isInteger('-5')).to.be.true
+    })
+
+    it('returns false for numbers that are not integers', () => {
+      expect(isInteger(Math.PI)).to.not.be.true
+    })
+
+    it('returns false for strings that are not integers', () => {
+      expect(isInteger('5.5')).to.not.be.true
+    })
+
+    it('returns false for things that are not numbers or strings', () => {
+      expect(isNumeric()).to.not.be.true
+      expect(isNumeric(null)).to.not.be.true
+      expect(isNumeric(true)).to.not.be.true
+      expect(isNumeric({})).to.not.be.true
+      expect(isNumeric([])).to.not.be.true
+    })
+  }) // end isInteger
+
+  describe('isNaturalNumber', () => {
+    it('returns true for natural numbers and strings that represent natural numbers', () => {
+      expect(isNaturalNumber(0)).to.be.true
+      expect(isNaturalNumber(95)).to.be.true
+      expect(isNaturalNumber('0')).to.be.true
+      expect(isNaturalNumber('5')).to.be.true
+    })
+
+    it('returns false for negative numbers', () => {
+      expect(isNaturalNumber(-1)).to.not.be.true
+    })
+
+    it('returns false for decimal numbers', () => {
+      expect(isNaturalNumber(Math.PI)).to.not.be.true
+    })
+
+    it('returns false for strings that are not natural numbers', () => {
+      expect(isNaturalNumber('5.5')).to.not.be.true
+      expect(isNaturalNumber('-5')).to.not.be.true
+    })
+
+    it('returns false for things that are not numbers or strings', () => {
+      expect(isNaturalNumber()).to.not.be.true
+      expect(isNaturalNumber(null)).to.not.be.true
+      expect(isNaturalNumber(true)).to.not.be.true
+      expect(isNaturalNumber({})).to.not.be.true
+      expect(isNaturalNumber([])).to.not.be.true
+    })
+  }) // end isNaturalNumber
 
   describe('isNumeric', () => {
     it('returns true for numbers and numeric strings', () => {
