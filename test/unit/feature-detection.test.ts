@@ -1,10 +1,9 @@
-import { expect } from 'chai'
-import { isBrowser } from '../../lib'
+import { isBrowser } from '../..'
 
 describe('feature detection tests', () => {
   describe('isBrowser', () => {
     it('returns false for headless environments', () => {
-      expect(isBrowser()).to.be.false
+      expect(isBrowser()).toBe(false)
     })
 
     it('returns true for browser environments', () => {

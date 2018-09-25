@@ -1,3 +1,7 @@
+// Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
+// import "core-js/fn/array.find"
+// ...
+
 import isBrowser from './feature-detection/is-browser'
 import generateID from './id/generate-id'
 import IDGenerator from './id/id-generator'
@@ -39,27 +43,5 @@ export {
   isPlainObject,
   buildUri,
   parseUri,
-  isValidUrl,
-}
-
-export default {
-  isBrowser,
-  generateID,
-  IDGenerator,
-  deepExtend,
-  deepMerge,
-  extend,
-  indexOfRegex,
-  lastIndexOfRegex,
-  isArray,
-  isDefined,
-  isInteger,
-  isIterable,
-  isNaturalNumber,
-  isNumeric,
-  isObject,
-  isPlainObject,
-  buildUri,
-  parseUri,
-  isValidUrl,
+  isValidUrl
 }

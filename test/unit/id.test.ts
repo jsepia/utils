@@ -1,14 +1,13 @@
-import { expect } from 'chai'
-import { generateID } from '../../lib'
+import { generateID } from '../..'
 
 describe('ID tests', () => {
   describe('generateID', () => {
     it('generates a numeric ID', () => {
-      expect(generateID()).to.be.a('number')
+      expect(typeof generateID()).toBe('number')
     })
 
     it('generates auto-incremental IDs', () => {
-      expect(generateID()).to.equal(generateID() - 1)
+      expect(generateID()).toEqual(generateID() - 1)
     })
   }) // end generateID
 })

@@ -1,12 +1,19 @@
 language: node_js
+branches:
+  only:
+    - master
+cache:
+  yarn: true
+  directories:
+    - node_modules
 node_js:
-- '6'
-- '7'
-- '8'
-script: npm run build && npm run test && npm run test:integ && npm pack
+  - node
+script:
+  - npm run test:prod && npm run build
 after_success:
-- npm run coveralls
-sudo: false
+  - npm run report-coverage
+  - npm run deploy-docs
+  - npm run semantic-release
 deploy:
   provider: npm
   email: jsepia@juliosepia.com
@@ -14,3 +21,4 @@ deploy:
     secure: OQHjljmshqxrUPuloFj0acoXHNxJFiWfSNy/AeRfDIZzrNu5XbupmCIbDUyB+VZeFQxr7nGwgZR3wIvJ3ZKMtIj68OPKs1ml4CWKlQw1tOdK8CENKnLqClQ2Do/6qf2NuqFUkazW5/vzPxC1CyLtetQUePiLz+5fyaG9zbmNfNZ+xLfZLqMdaa7cjpXG/XG4BbEUyTgiXmTXoQYxlZ41UylaxPB00VGwKoEoDGuZke/mJutjE7rgVSaiYhkRYXvDG5S6irdZoYVcinRjohR74ryRkoCJUIgxkE6bez40qq+fukodL7Zxb3HhAo48vstYtsQxG53mK7KTrb6dEbF9qBVBWJY2Cc6xqZs0anI+qnVrjjCFAKottXT2iN3gwaxGILF0s36fVVl1hti+MtM1Nxk18hucXOYjHVN8qwexz73zYGhOiiZkyTA1y0jayi8ZgfyjCFGsChKGRTP56Cq5isND6McvZ2s9Vl44Dy10XVGNWyuDstEF1PqtJ8ApM1flQAI8WZpDZcCCjQs7T8I06Zc3KSwAGN2BH/LwQRTTcTpKE/7PYvDGbMTTtE9KDWS7jUuopYLURZb+Eyk6A4YoMOY82hje6fvnMAjcVrBTtvfv8PCZ2hJrXytdKQkqC3gMHxHX7nFaQIcQWN+y5n27lFOV7kE6x7aPY2FR9282acM=
   on:
     repo: jsepia/utils
+
